@@ -1,0 +1,29 @@
+stages:
+  - build
+  - test
+
+build car:
+  script:
+    - pwd
+    - ls -lA /builds
+    - mkdir build
+    - cd build
+    - echo 'chasis' >> car.txt
+    - echo 'engine' >> car.txt
+    - echo 'wheels' >> car.txt
+    - ls /builds/bruhtus/gitlab-ci-experiment
+    - ls -lA /
+  stage: build
+  artifacts:
+    paths:
+      - build/
+
+test car:
+  stage: test
+  script:
+    - pwd
+    - ls
+    - test -f build/car.txt
+    - grep 'chasis' build/car.txt
+    - grep 'engine' build/car.txt
+    - grep 'wheels' build/car.txt
